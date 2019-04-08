@@ -1,4 +1,4 @@
-![alt text](GlobalWeather/WeatherClient/src/assets/images/weather-app-icon.png) ![alt text](GlobalWeather/WeatherClient/src/favicon.ico) 
+![alt text](GlobalWeather/WeatherClient/src/assets/images/weather-app-icon.png)
 
 # GlobalWeather
 
