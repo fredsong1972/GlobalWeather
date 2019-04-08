@@ -1,0 +1,25 @@
+.city {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  padding: 0px 20px 20px 20px;
+  margin: 0px 0px 50px 0px;
+  border: 1px solid;
+  border-radius: 5px;
+  box-shadow: 2px 2px #888888;
+}
+
+.city h1 {
+  line-height: 1.2
+}
+
+.city span {
+  padding-left: 20px
+}
+
+.city .row {
+  padding-top: 20px
+}
+
+

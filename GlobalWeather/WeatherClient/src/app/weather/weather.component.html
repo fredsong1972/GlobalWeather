@@ -1,0 +1,61 @@
+<div class="container content" style="padding-left: 0px; padding-top: 10px">
+  <div class="city">
+    <div *ngIf="weather">
+      <h1>{{weather.location | uppercase }}</h1>
+      <div class="row">
+        <table>
+          <tr>
+            <td>
+              <img src="{{weather.weatherIconUrl}}" class="img-thumbnail">
+            </td>
+            <td>
+              <span>{{weather.weatherText}}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div *ngIf="weather.isDaytime; then thenBlock else elseBlock"></div>
+              <ng-template #thenBlock><span>Daytime</span></ng-template>
+              <ng-template #elseBlock><span>Night</span></ng-template>
+            </td>
+            <td>
+              <span>{{weather.temperatureValue}}&deg;{{weather.temperatureUnit}}</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="!weather">
+      <div class="content-spacer-invisible"></div>
+      <div> {{errorMessage}}</div>
+    </div>
+  </div>
+
+  <form [formGroup]="weatherForm">
+    <div formGroupName="searchGroup">
+      <div class="row">
+        <div class="col-md-3 form-group">
+          <input type="text" id="country" class="form-control" formControlName="country"
+                 placeholder="Country"
+                 [ngbTypeahead]="searchCountry" [resultFormatter]="countryFormatter"
+                 [inputFormatter]="countryFormatter"
+                 (focus)="focus$.next($event.target.value)"
+                 (click)="click$.next($event.target.value)"
+                 #instance="ngbTypeahead"
+                 autocomplete="off" editable="false" [focusFirst]="false"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 form-group">
+          <input type="text" id="city" class="form-control" formControlName="city" placeholder="Location"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <input type="button" class="btn btn-primary" [disabled]="!weatherForm.valid" value="Go" (click)="search()"/>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
